@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>singleSchool</title>
+
+    <style media="screen">
+  .segmentation{
+    float: left;
+    width: 1px;
+    height: 1600px;
+    margin-top: 100px;
+    margin-left: 20px;
+    background: gray;
+  }
+  .box{
+    width: 1800px;
+    height: auto;
+    overflow: hidden;
+  }
+  .nav{
+    margin-top: 100px;
+    margin-left: 50px;
+    float: left;
+    width: 200px;
+    height: 800px;
+    text-align: center;
+    /*background: green;*/
+  }
+  a{
+    text-decoration: none;
+  }
+  .content{
+    float: left;
+    width: 1300px;
+    min-width: 400px;
+    height: 1000px;
+    /*background: lime;*/
+    margin-left: 150px;
+  }
+  .image{
+    width: 800px;
+    height: 200px;
+    background: url('2.png')
+  }
+  ul{
+    list-style-type: none;
+  }
+  .active{
+    margin-bottom: 50px;
+    width: 1200px;
+    height: auto;
+
+  }
+  .num{
+    margin-left: 40px;
+  }
+  .times{
+    margin-left: 55px;
+  }
+  .requireOl{
+    /*display: inline-block;*/
+    /*list-style-type: decimal-leading-zero;*/
+    /*overflow: hidden;*/
+  }
+  .requireLi{
+    /*float: left;*/
+  }
+  .wrap{
+    margin-top: 100px;
+    background: url('1.jpg') ;
+  }
+  .list{
+    overflow: hidden;
+    /*width: 3900px;*/
+    height: auto;
+    /*background: lime;*/
+    position: relative;
+  }
+  .oUl{
+    font-size: 20px;
+    /*color: yellow;*/
+    display: none;
+    /*border: 3px solid red;*/
+    width: 1300px;
+    height: auto;
+    /*background: green;*/
+    float: left;
+    /*position: absolute;*/
+
+  }
+
+  .aBtn{
+    float: left;
+    font-size: 25px;
+    width: 100px;
+    height: 30px;
+    outline: none;
+    border: none;
+    text-align: center;
+    line-height: 30px;
+    margin:15px 20px;
+    cursor: pointer;
+  }
+  .active1{
+    display: block;
+  }
+  .active2{
+    background: green;
+    color: white;
+  }
+  /*.bg{
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+
+  }*/
+  .bgactive{
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    background: green;
+  }
+  </style>
+  </head>
+  <body>
+    <div class="box">
+    <div class="nav" id="nav">
+      <h3><a href="schoolsingle.html?society"><span>社会招聘</span></a></h3>
+      <h3><a href="schoolsingle.html?school"><span>校园招聘</span></a></h3>
+    </div>
+    <div class="segmentation"></div>
+    <div class="content">
+        <div class="image"></div>
+
+        <div class="wrap">
+          <div class="list" id='list'>
+            <h3><span id='main'></span></h3>
+
+          </div>
+          <div class="btn" id='btn'>
+
+          </div>
+
+        </div>
+
+    </div>
+  </div>
+  <script type="text/javascript" src='data1.js'></script>
+  <script type="text/javascript">
+  var society = document.getElementById('society');
+  var school = document.getElementById('school');
+  var oTitle = document.getElementById('main');
+  var oList = document.getElementById('list');
+  var oBtn = document.getElementById('btn');
+
+
+  var search = window.location.search;
+  var target = window.location.search.substring(1);
+  var length = data[target].list.length;
+  var single = 5;
+
+  oTitle.innerHTML = data[target].title;
+  for(var i = 0;i < length/single;i ++) {
+    var oUl = document.createElement('ul');
+    if(i == 0) {
+      oUl.className = 'oUl active1';
+    }else{
+      oUl.className = 'oUl';
+    }
+    for(var x = 0;x < single; x++) {
+      if((i * single + x) == length) {
+        break;
+      }
+
+      var oLi = document.createElement('li');
+      oLi.className = 'active';
+      oUl.appendChild(oLi);
+
+      var p1 = document.createElement('p');
+      var aa = (i * single) + x;
+      // console.log(aa)
+      // console.log(data[target].list[aa]);
+      p1.innerHTML = '⭐️职位需求 ：' + data[target].list[aa].job;
+      oLi.appendChild(p1);
+
+      var span1 = document.createElement('span');
+      span1.className = 'num';
+      span1.innerHTML = '需求人数：' + data[target].list[(i * single + x)].num;
+      p1.appendChild(span1);
+      var span2 = document.createElement('span');
+      span2.className = 'times';
+      span2.innerHTML = '时间：' + data[target].list[(i * single + x)].times;
+      p1.appendChild(span2);
+
+      var p2 = document.createElement('p');
+      p2.innerHTML = '岗位要求 ：';
+      oLi.appendChild(p2);
+
+      var oOlLength = data[target].list[(i * single + x)].require.length;
+      for(var j = 0;j < oOlLength;j ++) {
+        var requireSpan = document.createElement('span');
+        requireSpan.className = 'requireLi';
+        requireSpan.innerHTML = (j+1) + ')' + data[target].list[(i * single + x)].require[j];
+        p2.appendChild(requireSpan);
+      }
+      var span3 = document.createElement('span');
+      span3.className = 'times';
+      span3.innerHTML = '.....[';
+      p2.appendChild(span3);
+
+
+      var a = document.createElement('a');
+      a.innerHTML = '查看详情]';
+      a.href = 'description.html' + search + '&' + (i * single + x);
+      a.target = '_blank';
+      p2.appendChild(a);
+      // console.log(a.href)
+
+
+    }
+
+    // oUl.innerHTML = i;
+    oList.appendChild(oUl);
+
+    var aBtn = document.createElement('button');
+    oBtn.appendChild(aBtn);
+    if(i == 0) {
+      aBtn.className = 'aBtn active2';
+    }else{
+      aBtn.className = 'aBtn';
+    }
+
+    aBtn.innerHTML = (i + 1);
+    aBtn.index = i;
+    aBtn.onclick = function () {
+      var numBtn = oBtn.getElementsByTagName('button')
+      var num = oList.getElementsByTagName('ul');
+      for(var a = 0;a < num.length;a ++) {
+        num[a].className = 'oUl';
+        numBtn[a].className = 'aBtn';
+      }
+      this.className = 'aBtn active2';
+      document.body.scrollTop = 80;
+      num[this.index].className = 'oUl active1';
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+  </body>
+</html>

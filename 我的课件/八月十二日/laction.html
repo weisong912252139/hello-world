@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      console.log(window.location)
+      var str1 = 'ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=iphone&rsv_pq=ae8a11070004562f&rsv_t=4115%2F8nYNTS0ycM92JKouxnZ83e6ScHZ7iivrl9xF0dxTfcEqKcZWJVokzM&rqlang=cn&rsv_enter=0&rsv_sug3=10&rsv_sug1=9&rsv_sug7=100&inputT=14019&rsv_sug4=15174'
+      console.log(toObj(str1))
+      function toObj(str) {
+        var obj = {};
+        var arr = str.split('&');
+        for(var i = 0;i < arr.length;i ++) {
+          var result = arr[i].split('=');
+          var key = result[0];
+          obj[key] = result[1];
+        }
+        return obj;
+      }
+
+    </script>
+
+  </body>
+</html>

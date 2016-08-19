@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>society</title>
+    <style type="text/css">
+        h3{
+            width:150px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .active{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<h3><a href="society.html#society">society</a></h3>
+<h3><a href="society.html#school">school</a></h3>
+<img src="5.jpg" alt="">
+<script type="application/javascript">
+    var aH = document.getElementsByTagName('h3');
+    
+    for(var i = 0;i < aH.length;i ++) {
+        aH[i].onclick = function () {
+            for(var j = 0;j < aH.length;j ++) {
+                aH[j].className = '';
+            }
+            this.className = 'active';
+        }
+
+    }
+    
+    window.onhashchange = function () {
+        console.log(window.location.hash)
+    }
+
+
+
+
+</script>
+
+</body>
+</html>

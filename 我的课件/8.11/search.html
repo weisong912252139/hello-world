@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>search</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+     var str = 'a=1&b=2&c=3';
+    toObj(str);
+    console.log(toObj(str))
+      function toObj(str) {
+        var obj = {}
+        // 拆分成数组，根据&符号来分,得到一个数组，元素分别是a=1,b=2,c=3
+        var arr = str.split('&');
+        // 在对这个数组进行遍历拆分成单个字符串
+        for(var i = 0;i < arr.length;i ++) {
+          // 再拆分成单个数组，并且让其以：分割的字符串
+          var result = arr[i].split('=');
+          var key = result[0];
+
+          obj[key] = Number(result[1]);
+
+        }
+        return obj;
+
+      }
+
+
+
+      var obj = {
+        a : 1,
+        b : 2,
+        c :3
+      }
+
+      toStr(obj)
+      console.log(toStr(obj))
+
+
+
+
+      function toStr(obj) {
+        var arr = [];
+        var str = '';
+        for(var x in obj) {
+          str = x + '=' + obj[x];
+          arr.push(str);
+          // arr.push(obj[x]);
+
+        }
+        return arr.join('&')
+      }
+
+    </script>
+  </body>
+</html>

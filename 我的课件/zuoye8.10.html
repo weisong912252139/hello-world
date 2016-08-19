@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>zuoye</title>
+    <style media="screen">
+      body,ul,li,span,button{
+        margin: 0;
+        padding:0;
+      }
+      .wrap li{
+        margin-bottom: 15px;
+      }
+      .wrap span{
+        display:inline-block;
+        width: 200px;
+        margin-right: 25px;
+        font-size:25px;
+      }
+      .wrap button{
+        padding:5px 15px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <ul class="wrap" id='box'>
+      <li id='first'>
+        <span>网页设计师</span> <button class="prev">⬆️</button> <button class='next'>⬇️</button>
+      </li>
+      <li id='second'>
+        <span>网页构架师</span> <button class="prev">⬆️</button> <button class='next'>⬇️</button>
+      </li>
+      <li id='third'>
+        <span>网页美工</span> <button class="prev">⬆️</button> <button class='next'>⬇️</button>
+      </li>
+      <li id='fourth'>
+        <span>网页管理员</span> <button class="prev">⬆️</button> <button class='next'>⬇️</button>
+      </li>
+      <li id='fifth'>
+        <span>网页体验师</span> <button class="prev">⬆️</button> <button class='next'>⬇️</button>
+      </li>
+    </ul>
+    <script type="text/javascript">
+    var oBox = document.getElementById('box');
+    var aLi = oBox.getElementsByTagName('li');
+
+
+
+    var firstLi = document.getElementById('first');
+    var secondLi = document.getElementById('second');
+    var thirdLi = document.getElementById('third');
+    var fourthLi = document.getElementById('fourth');
+    var fifthLi = document.getElementById('fifth');
+    change(firstLi);
+    change(secondLi);
+    change(thirdLi);
+    change(fourthLi);
+    change(fifthLi);
+
+
+function change(obj){
+  var oPrev = obj.getElementsByTagName('button')[0];
+  var oNext = obj.getElementsByTagName('button')[1];
+  oPrev.onclick = function () {
+    console.log(firstLi.previousElementSibling)
+    if (obj.previousElementSibling) {
+      oBox.insertBefore(obj,obj.previousElementSibling)
+    }else{
+      alert('到顶部了')
+    }
+
+
+  }
+  oNext.onclick = function (){
+    if (obj.nextElementSibling) {
+      oBox.insertBefore(obj.nextElementSibling, obj)
+    }else{
+      alert('到底部了')
+    }
+  }
+}
+
+
+
+
+
+
+
+
+//   var aNextBtn = oBox.getElementsByClassName('next');
+//   for(var j = 0 ;j < 5;j ++){
+//     aNextBtn[j].id = j;
+//   }
+//   console.log(aNextBtn.length);
+//   for (var i = 0 ;i < aNextBtn.length ;i ++) {
+//       aNextBtn[i].onclick = function () {
+//         console.log(this.id)
+//
+//         oBox.insertBefore(aLi[this.id],aLi[this.id].nextElementSibling.nextElementSibling);
+//         for(var j = 0;j < 5;j ++){
+//           aNextBtn[j].id = j;
+//         }
+//
+//     }
+//
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+  </body>
+</html>

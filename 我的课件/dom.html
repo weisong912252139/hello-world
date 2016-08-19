@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>document的操作</title>
+  </head>
+  <body>
+    <div id="a">
+      <a href="#"></a>
+      <p>
+      </p>
+      <button type="button" name="button"></button>
+      <img src="" alt="" />
+    </div>
+    <script type="text/javascript">
+      // dom有个叫节点，还有一个叫做dom🌲，DOM节点就是DOM里面最基础的单元
+      // 节点的类型：
+      // 1 标签节点（元素节点）
+      var oLi = document.getElementById('a');
+
+      // 用previousSibling来兼容的,还可以使用previousElementSibling
+      function previousSibling (obj) {
+        var prev=obj.previousSibling;
+        // console.log (prev);
+        if (prev === null){
+          return;
+        }
+        if (prev.nodeType === 1 ) {
+          return prev;
+        }
+        return previousSibling (prev);
+      }
+      // previousSibling(oLi)
+      console.log(previousSibling(oLi))
+
+// 用nextSibling，还可以使用nextElementSibling
+
+      function nextSibling (obj) {
+        var next = obj.nextSibling;
+
+        if (next === null) {
+          return;
+        }
+        if (next.nodeType === 1) {
+          return next;
+        }
+        return nextSibling (next);
+      }
+      // nextSibling (oLi);
+      console.log (nextSibling (oLi));
+
+
+      // firstChild,另外可以使用firstChildren来兼容
+
+      function firstChild (obj) {
+        var first = obj.firstChild;
+
+        if (first === null) {
+          return;
+        }
+        if (first.nodeType === 1) {
+          return first;
+        }
+        return nextSibling (first);
+      }
+      console.log (firstChild (oLi));
+
+
+      // lastChild,另外还可以使用nextChildren来进行兼容处理
+
+      function lastChild (obj) {
+        var last = obj.lastChild;
+        if (last === null) {
+          return ;
+        }
+        if (last.nodeType ===1) {
+          return last;
+        }
+        return previousSibling (last);
+      }
+      console.log (lastChild (oLi));
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>school</title>
+    <script type="text/javascript" src='data1.js'></script>
+    <style media="screen">
+    .segmentation{
+      float: left;
+      width: 1px;
+      height: 600px;
+      margin-top: 100px;
+      margin-left: 100px;
+    }
+    .box{
+      /*overflow: hidden;*/
+    }
+    .nav{
+      margin-top: 100px;
+      margin-left: 50px;
+      float: left;
+      width: 200px;
+      height: 800px;
+      text-align: center;
+      /*background: green;*/
+    }
+    a{
+      text-decoration: none;
+    }
+    .segmentation{
+      float: left;
+      width: 1px;
+      /*height: 800px;*/
+      background: gray;
+      margin-left: 100px;
+      margin-top: 100px;
+    }
+    .content{
+      float: left;
+      width: 800px;
+      min-width: 400px;
+      height: 1000px;
+      /*background: lime;*/
+      margin-left: 150px;
+    }
+    .image{
+      width: 800px;
+      height: 200px;
+      background: url('1.jpg')
+    }
+    ul{
+      list-style-type: none;
+    }
+    .active{
+      margin-bottom: 50px;
+    }
+    .num{
+      margin-left: 40px;
+    }
+    .times{
+      margin-left: 55px;
+    }
+    .requireOl{
+      /*display: inline-block;*/
+      /*list-style-type: decimal-leading-zero;*/
+      /*overflow: hidden;*/
+    }
+    .requireLi{
+      /*float: left;*/
+    }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="nav">
+        <h3><a href="school.html?society"><span>社会招聘</span></a></h3>
+        <h3><a href="school.html?school"><span>校园招聘</span></a></h3>
+      </div>
+      <div class="segmentation"></div>
+      <div class="content">
+        <div class="image">
+        </div>
+        <div class="wrap">
+          <div class="list">
+            <h3><span id='main'></span></h3>
+            <ul id='list'>
+            </ul>
+          </div>
+          <div class="btn">
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    var inp = 'a=1&b=2&c=3';
+    console.log(toObj(inp))
+    var oTitle = document.getElementById('main');
+    var search = window.location.search;
+    // console.log(search);
+    var target = window.location.search.substring(1);
+    var oUl = document.getElementById('list');
+
+  // var objTarget = toObj(target);
+  console.log(data[target].title)
+  oTitle.innerHTML = data[target].title;
+   console.log(data[target].list[0]);
+   var length = data[target].list.length;
+
+   for(var i = 0;i < length;i ++) {
+     var oLi = document.createElement('li');
+     oLi.className = 'active';
+     oUl.appendChild(oLi);
+     var p1 = document.createElement('p');
+     p1.innerHTML = '⭐️职位需求 ：' + data[target].list[i].job;
+     oLi.appendChild(p1);
+     var span1 = document.createElement('span');
+     span1.className = 'num';
+     span1.innerHTML = '需求人数：' + data[target].list[i].num;
+     p1.appendChild(span1);
+     var span2 = document.createElement('span');
+     span2.className = 'times';
+     span2.innerHTML = '时间：' + data[target].list[i].times;
+     p1.appendChild(span2);
+
+     var p2 = document.createElement('p');
+     p2.innerHTML = '岗位要求 ：';
+     oLi.appendChild(p2);
+
+     var oOlLength = data[target].list[i].require.length;
+     for(var j = 0;j < oOlLength;j ++) {
+       var requireSpan = document.createElement('span');
+       requireSpan.className = 'requireLi';
+       requireSpan.innerHTML = (j+1) + ')' + data[target].list[i].require[j];
+       p2.appendChild(requireSpan);
+     }
+     var span3 = document.createElement('span');
+     span3.className = 'times';
+     span3.innerHTML = '.....[';
+     p2.appendChild(span3);
+
+
+     var a = document.createElement('a');
+     a.innerHTML = '查看详情]';
+     a.href = 'description.html' + search + '&' + i ;
+     a.target = '_blank';
+     p2.appendChild(a);
+     console.log(a.href)
+
+   }
+
+
+
+
+
+
+
+
+
+function toObj(str) {
+var obj = {};
+str.split('&').forEach(function (item) {
+  var arr = item.split('=');
+  obj[arr[0]] = arr[1];
+})
+return obj;
+}
+
+    </script>
+
+
+  </body>
+</html>

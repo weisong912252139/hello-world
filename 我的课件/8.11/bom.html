@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bom</title>
+  </head>
+  <body>
+    <button type="button" name="button" id="btn">btn</button>
+    <script type="text/javascript">
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function (){
+      // window.open('http://www.baidu.com','-blank','width=500,height=200,left=200,top=100')
+      close();
+    }
+    console.log(window.navigator.userAgent)
+    if(window.navigator.userAgent.indexOf('Chrome') !== -1) {
+      alert('you are great')
+    }
+    function isIE (){
+      return window.navigator.userAgent.toLowerCase().indexOf('msie')
+    }
+    window.location.search = '1223';
+    window.location.hash = 'abc';
+    window.onHashChange = function(){
+
+    }
+
+    </script>
+
+
+  </body>
+</html>

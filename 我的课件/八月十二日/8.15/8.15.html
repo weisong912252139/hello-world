@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+</head>
+<body>
+<button id="btn">btn</button>
+<script type="application/javascript">
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function () {
+        this.innerHTML = 'WEISONG';
+        setTimeout(function () {
+            window.location.hash = Date.now()
+        }, 2000)
+
+    };
+    window.onhashchange = function () {
+        console.log('( ⊙ o ⊙ )啊！')
+    }
+
+
+
+</script>
+
+</body>
+</html>

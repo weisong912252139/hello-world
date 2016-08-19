@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h3>职位名称：<strong id='title'>前段工程师</strong></h3>
+    <p>
+      职位描述：<span id='description'>关于前端的描述</span>
+    </p>
+    <button type="button" name="button" id='prev'>返回上一页</button>
+    <script type="text/javascript">
+
+    var title = document.getElementById('title');
+    var description = document.getElementById('description');
+    var oBtn = document.getElementById('prev');
+
+    oBtn.onclick = function () {
+      window.location.go = -1;
+    }
+
+    // 先创建一个对象用来保存要展示的信息的内容，再根据window.locaton.search
+      var data  = {
+        a : {
+          title : '前端工程师1',
+          description : '关于前端的具体描述'
+        },
+        b : {
+          title : '后端工程师',
+          description : '关于后端工程师的具体描述'
+        },
+        c : {
+          title : 'weisong',
+          description : '关于weisong的具体描述'
+        }
+      }
+      var target = window.location.search;
+      // title.innerHTML = get(target).title;
+      // description.innerHTML = get(target).description;
+
+      function get(obj) {
+        var target = obj.split('=')[1];
+        var str = '';
+        console.log(target);
+            str = data[target];
+        return str;
+      };
+
+      function trans (obj){
+        var arr = [];
+        var target = obj.substring(1);
+        var obj1 = toObj(target);
+        console.log(obj1);
+        for(var a in obj1) {
+          arr.push(obj1[a]);
+        }
+        return arr;
+      }
+      console.log(trans(target))
+
+
+
+
+
+        function toObj(str) {
+          var obj = {};
+          var arr = str.split('&');
+          for(var i = 0;i < arr.length;i ++) {
+            var result = arr[i].split('=');
+            var key = result[0];
+            obj[key] = result[1];
+          }
+          return obj;
+        }
+
+        function toStr(obj) {
+        var arr = [];
+        var str = '';
+        for(var x in obj) {
+          str = x + '=' + obj[x];
+          arr.push(str);
+        }
+        return arr.join('&')
+      }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+  </body>
+</html>

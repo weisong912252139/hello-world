@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      .box{
+        padding: 50px;
+        width: 200px;
+        height: 200px;
+        background: green;
+      }
+      .inner{
+        width: 100px;
+        height: 100px;
+        background: lime;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box" id='box'>
+      <div class="inner">
+
+      </div>
+
+    </div>
+    <script type="text/javascript">
+      var oBox = document.getElementById('box');
+      oBox.addEventListener('click',work,true);
+      function work () {
+        console.log(1)
+      }
+      // oBox.removeEventListener('click', work)
+      removeEvent(oBox, 'click', work)
+
+      addEvent(oBox, 'click', fn1)
+      function fn1 () {
+        console.log(2)
+      }
+      removeEvent(oBox, 'click', fn1)
+
+      // ie和的兼容处理
+
+      function addEvent(obj, event, fn) {
+        if(obj.addEventListener) {
+          obj.addEventListener(event, fn, true);
+        } else {
+          obj.attachEvent('on' + event, function () {
+            fn.call(obj);
+          })
+        }
+      }
+      function removeEvent (obj, event, fn) {
+        // if(obj.detachEvent) {
+        //   obj.detachEvent('on' + event, fn);
+        // } else {
+        //   obj.removeEventListener(event, fn)
+        // }
+        obj.removeEventListener(event,fn,true)
+      }
+
+
+      v
+
+
+
+
+
+    </script>
+
+  </body>
+</html>

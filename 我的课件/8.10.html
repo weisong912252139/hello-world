@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>document</title>
+    <style media="screen">
+      ul{
+        list-style-type: none;
+        overflow: hidden;
+      }
+      ul li{
+        float: left;
+        margin-left: 25px;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        background: gray;
+      }
+      li:hover{
+        text-decoration: underline;
+      }
+      li.active{
+        background: green;
+        color: white;
+      }
+      li.active:hover{
+        text-decoration:underline;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>某公司招聘信息</h3>
+    <div class="box">
+      <h4>职位</h4>
+      <ul>
+        <li>前段开发</li>
+        <li>后端开发</li>
+        <li>PHP</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>薪资</h4>
+      <ul>
+        <li>3000~4000</li>
+        <li>4000~6000</li>
+        <li>6000~10000</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h4>地点</h4>
+      <ul>
+        <li>北京</li>
+        <li>上海</li>
+        <li>杭州</li>
+        <li>深圳</li>
+      </ul>
+    </div>
+    <p id="result">你选择的搜索条件是:<span></span><span></span><span></span></p>
+    <script type="text/javascript">
+    var aDiv = document.getElementsByClassName('box');
+    var result = document.getElementById('result');
+    var aSpan = result.getElementsByTagName('span');
+    // var arr = [];
+      section(aDiv[0],0);
+      section(aDiv[1],1);
+      section(aDiv[2],2);
+
+      function section(obj,index) {
+        var oUl = obj.getElementsByTagName('ul')[0];
+        var arr = [];
+        // console.log(oUl.children[2]);
+        for(var i = 0;i < oUl.children.length;i ++){
+          oUl.children[i].onclick = function () {
+            arr = [];
+            for(var j = 0;j < oUl.children.length;j ++) {
+              oUl.children[j].className = '';
+            }
+            this.className = 'active';
+            // var add1 = add(obj);
+
+              aSpan[index].innerHTML = this.innerHTML
+
+
+          console.log(index)
+          }
+        }
+      }
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+  </body>
+</html>

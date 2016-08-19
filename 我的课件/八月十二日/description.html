@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>description</title>
+      <script type="text/javascript" src='data1.js'></script>
+    <style media="screen">
+    .segmentation{
+      float: left;
+      width: 1px;
+      height: 600px;
+      margin-top: 100px;
+      margin-left: 100px;
+    }
+    .box{
+      overflow: hidden;
+      width: 1600px;
+    }
+    .nav{
+      margin-top: 100px;
+      margin-left: 50px;
+      float: left;
+      width: 200px;
+      height: 800px;
+      text-align: center;
+      /*background: green;*/
+    }
+    a{
+      text-decoration: none;
+    }
+    .segmentation{
+      float: left;
+      width: 1px;
+      height: 800px;
+      background: gray;
+      margin-left: 100px;
+      margin-top: 100px;
+    }
+    .list{
+      margin-top: 150px;
+      /*background: url('4.jpg') no-repeat;*/
+    }
+    .content{
+      float: left;
+      width: 1000px;
+      /*min-width: 400px;*/
+      height: auto;
+      margin-top: 100px;
+
+      /*background: lime;*/
+      margin-left: 150px;
+    }
+    .image{
+      width: 800px;
+      height: 200px;
+      background: url('2.png')
+    }
+    .kong1{
+      display: inline-block;
+      width: 400px;
+    }
+    .kong2{
+      display: inline-block;
+      width: 250px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div class="nav">
+        <h3><a href="school.html?society"><span>社会招聘</span></a></h3>
+        <h3><a href="school.html?school"><span>校园招聘</span></a></h3>
+      </div>
+      <div class="segmentation"></div>
+      <div class="content">
+        <div class="image">
+        </div>
+        <div class="list" id='content'>
+          <h3><span id='main'></span></h3>
+
+
+        </div>
+
+      </div>
+    </div>
+<script type="text/javascript">
+var oContent = document.getElementById('content');
+var oTitle = document.getElementById('main');
+var search = window.location.search.substring(1);
+var target = search.split('&');
+
+console.log(target[0]);
+console.log(target[1]);
+console.log(data[target[0]].cont[target[1]]);
+oTitle.innerHTML = data[target[0]].title;
+
+var h1 = document.createElement('h2');
+h1.innerHTML = data[target[0]].cont[target[1]].job;
+oContent.appendChild(h1);
+
+var oDiv1 = document.createElement('div');
+oContent.appendChild(oDiv1);
+
+var message = data[target[0]].cont[target[1]].message;//是一个数组
+// console.log(message.length);
+for(var i = 0;i < message.length;i ++) {
+    oDiv1.innerHTML +='<span class="kong1">' + message[i][0] + '</span>' + '<span class="kong2">' + message[i][1] + '</span>' + '<br>';
+}
+
+var oDiv2 = document.createElement('div');
+oContent.appendChild(oDiv2);
+var require1 = data[target[0]].cont[target[1]].require;//是一个数组
+console.log(require1.length);
+
+var h2 = document.createElement('h3');
+h2.innerHTML = '岗位要求';
+oDiv2.appendChild(h2);
+
+var oOl = document.createElement('ol');
+oDiv2.appendChild(oOl);
+for(var a = 0;a < require1.length;a ++) {
+  var li = document.createElement('li');
+  li.innerHTML = require1[a];
+  oOl.appendChild(li);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function toObj(str) {
+var obj = {};
+str.split('&').forEach(function (item) {
+  var arr = item.split('=');
+  obj[arr[0]] = arr[1];
+})
+return obj;
+}
+</script>
+
+
+
+
+
+
+
+  </body>
+</html>

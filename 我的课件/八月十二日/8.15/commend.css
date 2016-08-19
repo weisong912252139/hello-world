@@ -1,0 +1,50 @@
+body,ul,li,a,h3,h4,img,span,ol{
+    margin:0;
+    padding: 0;
+}
+.content{
+    width:1000px;
+    margin:50px auto 0;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+.nav-box{
+    float: left;
+    width:189px;
+}
+.nav-box h3{
+    padding: 16px 0;
+}
+.nav-box .nav-list li{
+    width: 160px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    margin-bottom: 7px;
+
+}
+.nav-box .nav-list a{
+    color: #333333;
+}
+.nav-box .active {
+    background: #328fbe;
+}
+.nav-box .active a{
+    color: white;
+}
+
+.content-box{
+    padding-left: 40px;
+    float: right;
+    width:770px;
+    border-left: 1px solid #aaaaaa;
+}
+.cont-title{
+    padding: 24px 0;
+    line-height: 54px;
+    font-size:18px;
+}
